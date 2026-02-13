@@ -10,6 +10,7 @@ import InsurancePage from "./pages/InsurancePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import LegalPage from "./pages/LegalPage";
+import HospitalRegistrationPage from "./pages/HospitalRegistrationPage";
 import NotFound from "./pages/NotFound";
 
 import UserDashboardLayout from "./pages/dashboard/UserDashboardLayout";
@@ -59,6 +60,7 @@ const App = () => (
           <Route path="/privacy" element={<LegalPage type="privacy" />} />
           <Route path="/terms" element={<LegalPage type="terms" />} />
           <Route path="/disclaimer" element={<LegalPage type="disclaimer" />} />
+          <Route path="/hospital-registration" element={<HospitalRegistrationPage />} />
 
           {/* User Dashboard */}
           <Route path="/dashboard" element={<UserDashboardLayout />}>
