@@ -10,53 +10,45 @@ const footerLinks = {
   Company: [
     { label: "About Us", to: "/about" },
     { label: "Contact", to: "/contact" },
-    { label: "Careers", to: "/careers" },
   ],
   Legal: [
     { label: "Privacy Policy", to: "/privacy" },
     { label: "Terms & Conditions", to: "/terms" },
-    { label: "Insurance Disclaimer", to: "/disclaimer" },
+    { label: "Disclaimer", to: "/disclaimer" },
   ],
 };
 
 export function Footer() {
   return (
     <footer className="border-t bg-card">
-      <div className="container py-12">
+      <div className="container py-10">
         <div className="grid gap-8 md:grid-cols-4">
           <div>
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <Heart className="h-4 w-4 text-primary-foreground" />
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary">
+                <Heart className="h-3.5 w-3.5 text-primary-foreground" />
               </div>
-              <span className="font-display text-lg font-bold text-foreground">
-                Medi<span className="text-primary">Connect</span>
-              </span>
+              <span className="font-display text-base font-bold text-foreground">MediConnect</span>
             </Link>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Simplifying healthcare decisions. Find hospitals, compare insurance, and book appointments — all in one place.
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Simplifying healthcare decisions. Find hospitals, compare insurance, and book appointments.
             </p>
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="font-display text-sm font-semibold text-foreground mb-3">{title}</h4>
+              <h4 className="font-display text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">{title}</h4>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      to={link.to}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
+                    <Link to={link.to} className="text-sm text-foreground/70 hover:text-primary transition-colors">{link.label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-        <div className="mt-10 border-t pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} MediConnect. All rights reserved. We do not sell insurance. We help you compare & connect.
+        <div className="mt-8 border-t pt-5 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} MediConnect. All rights reserved.
         </div>
       </div>
     </footer>
