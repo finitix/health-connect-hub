@@ -1,16 +1,27 @@
 import { Link } from "react-router-dom";
-import { Heart, Menu, X, ChevronDown } from "lucide-react";
+import { Heart, Menu, X, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "Find Hospitals", to: "/search" },
   { label: "Insurance Plans", to: "/insurance" },
+  { label: "For Hospitals", to: "/for-hospitals" },
+  { label: "About", to: "/about" },
 ];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user, roles, signOut, profile } = useAuth();
+
+  const getDashboardLink = () => {
+    if (roles.includes("super_admin")) return "/super-admin";
+    if (roles.includes("hospital_admin")) return "/hospital-admin";
+    if (roles.includes("insurance_admin")) return "/insurance-admin";
+    return "/dashboard";
+  };
 
   return (
     <header className="sticky top-0 z-50 glass-surface border-b">
@@ -31,8 +42,24 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <Button variant="ghost" size="sm" asChild><Link to="/login">Log in</Link></Button>
-          <Button size="sm" asChild><Link to="/signup">Get Started</Link></Button>
+          {user ? (
+            <>
+              <Button variant="ghost" size="sm" asChild>
+                <Link to={getDashboardLink()}>
+                  <User className="h-3.5 w-3.5 mr-1" />
+                  {profile?.full_name || "Dashboard"}
+                </Link>
+              </Button>
+              <Button variant="outline" size="sm" onClick={signOut}>
+                <LogOut className="h-3.5 w-3.5 mr-1" /> Sign out
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button variant="ghost" size="sm" asChild><Link to="/login">Log in</Link></Button>
+              <Button size="sm" asChild><Link to="/signup">Get Started</Link></Button>
+            </>
+          )}
         </div>
 
         <button className="md:hidden p-2 text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -50,8 +77,17 @@ export function Navbar() {
             ))}
           </nav>
           <div className="mt-3 flex flex-col gap-2">
-            <Button variant="outline" size="sm" asChild><Link to="/login">Log in</Link></Button>
-            <Button size="sm" asChild><Link to="/signup">Get Started</Link></Button>
+            {user ? (
+              <>
+                <Button variant="outline" size="sm" asChild><Link to={getDashboardLink()} onClick={() => setMobileOpen(false)}>Dashboard</Link></Button>
+                <Button size="sm" onClick={() => { signOut(); setMobileOpen(false); }}>Sign out</Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" size="sm" asChild><Link to="/login">Log in</Link></Button>
+                <Button size="sm" asChild><Link to="/signup">Get Started</Link></Button>
+              </>
+            )}
           </div>
         </div>
       )}

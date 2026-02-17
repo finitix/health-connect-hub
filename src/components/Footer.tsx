@@ -5,11 +5,12 @@ const footerLinks = {
   Platform: [
     { label: "Find Hospitals", to: "/search" },
     { label: "Compare Insurance", to: "/insurance" },
-    { label: "How It Works", to: "/#how-it-works" },
+    { label: "For Hospitals", to: "/for-hospitals" },
+    { label: "Register Hospital", to: "/hospital-registration" },
   ],
   Company: [
     { label: "About Us", to: "/about" },
-    { label: "Contact", to: "/contact" },
+    { label: "How It Works", to: "/#how-it-works" },
   ],
   Legal: [
     { label: "Privacy Policy", to: "/privacy" },
@@ -31,7 +32,7 @@ export function Footer() {
               <span className="font-display text-base font-bold text-foreground">MediConnect</span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Simplifying healthcare decisions. Find hospitals, compare insurance, and book appointments.
+              Simplifying healthcare decisions. Find hospitals, compare insurance, and book appointments — all in one place.
             </p>
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
