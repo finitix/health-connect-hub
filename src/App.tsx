@@ -30,6 +30,7 @@ import HospitalAdminLayout from "./pages/hospital-admin/HospitalAdminLayout";
 import HospitalAdminHome from "./pages/hospital-admin/HospitalAdminHome";
 import DoctorManagement from "./pages/hospital-admin/DoctorManagement";
 import AppointmentManagement from "./pages/hospital-admin/AppointmentManagement";
+import BookingFormBuilder from "./pages/hospital-admin/BookingFormBuilder";
 import HospitalInsuranceManagement from "./pages/hospital-admin/HospitalInsuranceManagement";
 import HospitalAnalytics from "./pages/hospital-admin/HospitalAnalytics";
 
@@ -86,6 +87,7 @@ const App = () => (
               <Route index element={<HospitalAdminHome />} />
               <Route path="doctors" element={<DoctorManagement />} />
               <Route path="appointments" element={<AppointmentManagement />} />
+              <Route path="booking-form" element={<BookingFormBuilder />} />
               <Route path="insurance" element={<HospitalInsuranceManagement />} />
               <Route path="analytics" element={<HospitalAnalytics />} />
             </Route>
