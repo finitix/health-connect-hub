@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import LegalPage from "./pages/LegalPage";
 import HospitalRegistrationPage from "./pages/HospitalRegistrationPage";
+import HospitalSignupPage from "./pages/HospitalSignupPage";
 import AboutPage from "./pages/AboutPage";
 import ForHospitalsPage from "./pages/ForHospitalsPage";
 import NotFound from "./pages/NotFound";
@@ -72,6 +73,7 @@ const App = () => (
             <Route path="/terms" element={<LegalPage type="terms" />} />
             <Route path="/disclaimer" element={<LegalPage type="disclaimer" />} />
             <Route path="/hospital-registration" element={<HospitalRegistrationPage />} />
+            <Route path="/hospital-signup" element={<HospitalSignupPage />} />
 
             {/* User Dashboard */}
             <Route path="/dashboard" element={<ProtectedRoute><UserDashboardLayout /></ProtectedRoute>}>
