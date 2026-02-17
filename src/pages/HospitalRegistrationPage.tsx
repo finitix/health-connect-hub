@@ -80,6 +80,11 @@ export default function HospitalRegistrationPage() {
             <span className="text-xs font-semibold text-accent uppercase tracking-wider">Hospital Registration</span>
             <h1 className="font-display text-2xl font-bold text-foreground mt-2">Register Your Hospital</h1>
             <p className="mt-1 text-sm text-muted-foreground">Join MediConnect and reach thousands of patients</p>
+            {!user && (
+              <p className="mt-2 text-sm text-muted-foreground">
+                Don't have a hospital account? <Link to="/hospital-signup" className="text-primary font-medium underline">Create one first</Link>
+              </p>
+            )}
           </div>
 
           {!user && (

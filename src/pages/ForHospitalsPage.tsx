@@ -41,7 +41,7 @@ export default function ForHospitalsPage() {
             </motion.p>
             <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={3} className="mt-8 flex gap-3 justify-center">
               <Button className="bg-accent hover:bg-accent/90 text-accent-foreground" size="lg" asChild>
-                <Link to="/hospital-registration">Register Now <ArrowRight className="ml-1 h-4 w-4" /></Link>
+                <Link to="/hospital-signup">Get Started <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
             </motion.div>
           </div>
@@ -102,7 +102,7 @@ export default function ForHospitalsPage() {
             <p className="mt-2 text-sm text-primary-foreground/70">Registration is free. Get verified and start receiving patients within 48 hours.</p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
               <Button className="bg-accent hover:bg-accent/90 text-accent-foreground" size="lg" asChild>
-                <Link to="/hospital-registration">Register Your Hospital</Link>
+                <Link to="/hospital-signup">Create Hospital Account</Link>
               </Button>
               <Button variant="outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10" asChild>
                 <Link to="/about">Learn More</Link>
