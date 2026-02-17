@@ -75,7 +75,7 @@ const App = () => (
             <Route path="/disclaimer" element={<LegalPage type="disclaimer" />} />
             <Route path="/hospital-registration" element={<HospitalRegistrationPage />} />
             <Route path="/hospital-signup" element={<HospitalSignupPage />} />
-            <Route path="/super-admin/login" element={<SuperAdminLoginPage />} />
+            <Route path="/sa" element={<SuperAdminLoginPage />} />
 
             {/* User Dashboard */}
             <Route path="/dashboard" element={<ProtectedRoute><UserDashboardLayout /></ProtectedRoute>}>
