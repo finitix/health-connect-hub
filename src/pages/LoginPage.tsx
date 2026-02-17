@@ -17,17 +17,28 @@ export default function LoginPage() {
     e.preventDefault();
     if (!email || !password) { toast.error("Please fill in all fields"); return; }
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data: authData, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) { setLoading(false); toast.error(error.message); return; }
+
+    // Fetch roles and redirect based on role
+    const userId = authData.user?.id;
+    if (userId) {
+      const { data: roles } = await supabase.from("user_roles").select("role").eq("user_id", userId);
+      const userRoles = roles?.map((r: any) => r.role) || [];
+      toast.success("Welcome back!");
+      if (userRoles.includes("super_admin")) {
+        navigate("/super-admin", { replace: true });
+      } else if (userRoles.includes("hospital_admin")) {
+        navigate("/hospital-admin", { replace: true });
+      } else if (userRoles.includes("insurance_admin")) {
+        navigate("/insurance-admin", { replace: true });
+      } else {
+        navigate("/dashboard", { replace: true });
+      }
+    } else {
+      navigate("/dashboard", { replace: true });
+    }
     setLoading(false);
-    if (error) { toast.error(error.message); return; }
-    toast.success("Welcome back!");
-    // Redirect based on role
-    const { data: roles } = await supabase.from("user_roles").select("role").eq("user_id", (await supabase.auth.getUser()).data.user?.id || "");
-    const userRoles = roles?.map((r: any) => r.role) || [];
-    if (userRoles.includes("super_admin")) navigate("/super-admin");
-    else if (userRoles.includes("hospital_admin")) navigate("/hospital-admin");
-    else if (userRoles.includes("insurance_admin")) navigate("/insurance-admin");
-    else navigate("/dashboard");
   };
 
   const handleGoogleLogin = async () => {
