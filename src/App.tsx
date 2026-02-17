@@ -16,6 +16,7 @@ import SignupPage from "./pages/SignupPage";
 import LegalPage from "./pages/LegalPage";
 import HospitalRegistrationPage from "./pages/HospitalRegistrationPage";
 import HospitalSignupPage from "./pages/HospitalSignupPage";
+import SuperAdminLoginPage from "./pages/SuperAdminLoginPage";
 import AboutPage from "./pages/AboutPage";
 import ForHospitalsPage from "./pages/ForHospitalsPage";
 import NotFound from "./pages/NotFound";
@@ -74,6 +75,7 @@ const App = () => (
             <Route path="/disclaimer" element={<LegalPage type="disclaimer" />} />
             <Route path="/hospital-registration" element={<HospitalRegistrationPage />} />
             <Route path="/hospital-signup" element={<HospitalSignupPage />} />
+            <Route path="/super-admin/login" element={<SuperAdminLoginPage />} />
 
             {/* User Dashboard */}
             <Route path="/dashboard" element={<ProtectedRoute><UserDashboardLayout /></ProtectedRoute>}>
