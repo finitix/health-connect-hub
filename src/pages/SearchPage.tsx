@@ -8,6 +8,10 @@ import { motion } from "framer-motion";
 
 const indianStates = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Delhi"];
 
+const stateDistricts: Record<string, string[]> = {
+  "Andhra Pradesh": ["Anantapur","Chittoor","East Godavari","Guntur","Krishna","Kurnool","Nellore (Sri Potti Sriramulu Nellore)","Prakasam","Srikakulam","Visakhapatnam","Vizianagaram","West Godavari","YSR Kadapa","Alluri Sitharama Raju","Anakapalli","Annamayya","Bapatla","Eluru","Kakinada","Konaseema","Manyam (Parvathipuram Manyam)","Nandyal","NTR","Palnadu","Sri Sathya Sai","Tirupati"],
+};
+
 interface Hospital {
   id: string;
   name: string;
@@ -90,7 +94,7 @@ export default function SearchPage() {
         <div className="container flex flex-col gap-6 lg:flex-row">
           <aside className="hidden lg:block w-60 shrink-0">
             <FilterPanel
-              states={indianStates} districts={allDistricts} specs={allSpecs}
+              states={indianStates} districts={selectedState && stateDistricts[selectedState] ? stateDistricts[selectedState] : allDistricts} specs={allSpecs}
               selectedState={selectedState} setSelectedState={setSelectedState}
               selectedDistrict={selectedDistrict} setSelectedDistrict={setSelectedDistrict}
               selectedType={selectedType} setSelectedType={setSelectedType}
@@ -103,7 +107,7 @@ export default function SearchPage() {
             </Button>
             {showFilters && <div className="mt-3">
               <FilterPanel
-                states={indianStates} districts={allDistricts} specs={allSpecs}
+                states={indianStates} districts={selectedState && stateDistricts[selectedState] ? stateDistricts[selectedState] : allDistricts} specs={allSpecs}
                 selectedState={selectedState} setSelectedState={setSelectedState}
                 selectedDistrict={selectedDistrict} setSelectedDistrict={setSelectedDistrict}
                 selectedType={selectedType} setSelectedType={setSelectedType}
