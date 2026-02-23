@@ -5,12 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
+import { stateDistricts } from "@/data/indianDistricts";
 
 const indianStates = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Delhi"];
-
-const stateDistricts: Record<string, string[]> = {
-  "Andhra Pradesh": ["Anantapur","Chittoor","East Godavari","Guntur","Krishna","Kurnool","Nellore (Sri Potti Sriramulu Nellore)","Prakasam","Srikakulam","Visakhapatnam","Vizianagaram","West Godavari","YSR Kadapa","Alluri Sitharama Raju","Anakapalli","Annamayya","Bapatla","Eluru","Kakinada","Konaseema","Manyam (Parvathipuram Manyam)","Nandyal","NTR","Palnadu","Sri Sathya Sai","Tirupati"],
-};
 
 interface Hospital {
   id: string;
